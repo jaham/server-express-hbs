@@ -18,14 +18,14 @@ app.get('/', (req, res) => {
 
     connection.connect();
 
-    connection.query('SELECT * FROM oc_user', function(error, results, fields) {
+    connection.query('SELECT * FROM usuarios', function(error, results, fields) {
         if (error) throw 'bueno' + error;
 
         res.render('home.hbs', {
-                nombre: 'jaham',
-                results
-            })
-            //res.send(JSON.stringify(results))
+            nombre: 'jaham',
+            results
+        })
+        res.send(JSON.stringify(results))
             //console.log('The solution is: ', results[0]);
     });
 

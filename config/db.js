@@ -3,7 +3,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'i2os'
+    database: 'turnos'
 });
 
 module.exports = {
