@@ -14,23 +14,32 @@ app.set('view engine', 'hbs');
 
 const port = process.env.PORT || 3000
 
-app.get('/', (req, res) => {
+app.get('/', async(req, res) => {
 
     connection.connect();
 
-    connection.query('SELECT * FROM usuarios', function(error, results, fields) {
+    connection.query('SELECT * FROM usuarios', async(error, results, fields) => {
         if (error) throw 'bueno' + error;
 
         res.render('home.hbs', {
-            nombre: 'jaham',
-            results
-        })
-        res.send(JSON.stringify(results))
+                nombre: 'jaham',
+                users: results
+            })
+            //res.send(JSON.stringify(results))
             //console.log('The solution is: ', results[0]);
     });
 
     connection.end();
 
+})
+
+
+app.get(`/admin`, (req, res) => {
+    res.render('admin.hbs')
+})
+
+app.get(`/servicios`, (req, res) => {
+    res.render('servicios.hbs')
 })
 
 
